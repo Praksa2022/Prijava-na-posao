@@ -1,4 +1,4 @@
-package com.itacademy.AttendanceApp;
+package com.itacademy;
 
 
 import org.springframework.boot.SpringApplication;
