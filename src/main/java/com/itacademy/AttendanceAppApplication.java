@@ -9,6 +9,8 @@ public class AttendanceAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AttendanceAppApplication.class, args);
+
     }
+
 
 }
