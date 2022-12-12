@@ -1,4 +1,4 @@
-package com.itacademy.AttendanceApp;
+package com.itacademy;
 
 
 import org.springframework.boot.SpringApplication;
@@ -11,5 +11,6 @@ public class AttendanceAppApplication {
         SpringApplication.run(AttendanceAppApplication.class, args);
 
     }
+
 
 }
