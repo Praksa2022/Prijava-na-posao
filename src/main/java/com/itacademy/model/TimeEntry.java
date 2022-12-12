@@ -1,9 +1,7 @@
-package com.itacademy.model.timeentry;
+package com.itacademy.model;
 
-import com.itacademy.model.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.validation.annotation.Validated;
 
 import java.io.Serializable;
 import java.util.Objects;

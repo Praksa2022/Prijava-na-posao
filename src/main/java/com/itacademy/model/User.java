@@ -1,6 +1,5 @@
-package com.itacademy.model.user;
+package com.itacademy.model;
 
-import com.itacademy.model.timeentry.TimeEntry;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
