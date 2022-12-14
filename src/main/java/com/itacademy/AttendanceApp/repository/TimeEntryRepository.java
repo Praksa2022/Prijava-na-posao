@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface TimeEntryRepository extends JpaRepository<TimeEntry,Long>{
+public interface TimeEntryRepository extends JpaRepository<TimeEntry,Integer>{
     TimeEntry findAllByUser(String username);
 
 }

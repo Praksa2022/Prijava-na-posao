@@ -1,14 +1,16 @@
 package com.itacademy.AttendanceApp.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
+
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Data
-@Table(name = "timeentry", schema = "attendanceappdb")
+@Table(name = "timeentry", schema = "attendanceapp")
 public class TimeEntry implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,3 +39,4 @@ public class TimeEntry implements Serializable {
         return Objects.hash(id);
     }
 }
+

@@ -7,14 +7,13 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-
 import java.io.Serializable;
-import java.util.Objects;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Data
-@Table(name = "users", schema = "attendanceappdb")
+@Table(name = "users", schema = "attendanceapp")
 public class User implements Serializable {
     @Id
     @Basic(optional = false)
@@ -75,4 +74,3 @@ public class User implements Serializable {
         return Objects.hash(id);
     }
 }
-
