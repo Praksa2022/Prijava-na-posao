@@ -1,15 +1,14 @@
-    package com.itacademy.AttendanceApp.service;
+        package com.itacademy.AttendanceApp.service;
 
-    import com.itacademy.AttendanceApp.entity.TimeEntry;
-    import com.itacademy.AttendanceApp.repository.TimeEntryRepository;
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.stereotype.Service;
+        import com.itacademy.AttendanceApp.entity.TimeEntry;
+        import com.itacademy.AttendanceApp.repository.TimeEntryRepository;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.stereotype.Service;
+        import java.util.List;
+        import java.util.Optional;
 
-    import java.util.List;
-
-    @Service
-    public class TimeEntryService {
-
+        @Service
+        public class TimeEntryService {
 
         @Autowired
         private TimeEntryRepository timeEntryRepository;
@@ -23,8 +22,29 @@
             return timeEntryRepository.save(timeEntry);
         }
 
+
         public TimeEntry getByUser(String username) {
             return timeEntryRepository.findAllByUser(username);
         }
-    }
+
+        public int updateTimeEntry(TimeEntry timeEntry) {
+            timeEntryRepository.save(timeEntry);
+            return 1;
+        }
+
+        public String deleteRow(Long id) {
+            timeEntryRepository.deleteById(id);
+            return "Success";
+        }
+
+        public TimeEntry getTimeEntryById(Long id) {
+            Optional<TimeEntry> optional = timeEntryRepository.findById(id);
+            TimeEntry timeEntry = optional.get();
+            return timeEntry;
+
+        }
+        }
+
+
+
 
