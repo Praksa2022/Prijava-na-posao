@@ -4,6 +4,9 @@
         import com.itacademy.AttendanceApp.repository.TimeEntryRepository;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Service;
+        import org.springframework.web.bind.annotation.GetMapping;
+        import org.springframework.web.bind.annotation.Mapping;
+
         import java.util.List;
         import java.util.Optional;
 
@@ -23,21 +26,24 @@
         }
 
 
+
         public TimeEntry getByUser(String username) {
             return timeEntryRepository.findAllByUser(username);
         }
+
 
         public int updateTimeEntry(TimeEntry timeEntry) {
             timeEntryRepository.save(timeEntry);
             return 1;
         }
 
-        public String deleteRow(Long id) {
+
+        public String deleteRow(Integer id) {
             timeEntryRepository.deleteById(id);
             return "Success";
         }
 
-        public TimeEntry getTimeEntryById(Long id) {
+        public TimeEntry getTimeEntryById(Integer id) {
             Optional<TimeEntry> optional = timeEntryRepository.findById(id);
             TimeEntry timeEntry = optional.get();
             return timeEntry;
