@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MariaDB - attendanceapp@localhost" uuid="e6c5fecd-294a-45c3-a067-bc9ad7d16b5e">
+    <data-source source="LOCAL" name="AttendanceApp/Hibernate" uuid="e57a3132-4d4d-4f4d-a669-86c5939f2b88">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate</remarks>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://localhost:3306/attendanceapp</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>

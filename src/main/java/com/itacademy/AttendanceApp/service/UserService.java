@@ -13,7 +13,7 @@ public class UserService {
     @Autowired
     private final UserRepository userRepository;
 
-    public UserService (UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -23,5 +23,14 @@ public class UserService {
 
     public User saveUser(User user) {
         return userRepository.save(user);
+    }
+
+    public User updateUser(User user) {
+        User updateResponse = userRepository.save(user);
+        return updateResponse;
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 }
