@@ -24,16 +24,21 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/showNewUserForm")
+    @PostMapping("/register")
     public String showNewUserForm(Model model){
         User user = new User();
         model.addAttribute("ourUser", user);
-        return "new_user";
+        return "register";
     }
 
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("ourUser") User user){
         userService.saveUser(user);
         return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model){
+        return "login";
     }
 }
