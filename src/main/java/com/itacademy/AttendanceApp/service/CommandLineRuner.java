@@ -1,10 +1,13 @@
 package com.itacademy.AttendanceApp.service;
 
+import com.itacademy.AttendanceApp.repository.TimeEntryRepository;
 import com.itacademy.AttendanceAppApplication;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
@@ -12,8 +15,8 @@ import java.util.Arrays;
 
 
 @SpringBootApplication
-public class CommandLineRuner {
 
+public class CommandLineRuner {
 
 
     public static void main(String[] args) {
@@ -21,6 +24,8 @@ public class CommandLineRuner {
         TimeEntryService service = applicationContext.getBean(TimeEntryService.class);
         service.doSth(args);
     }
+
+
 
     @Service
     class TimeEntryService {
@@ -33,14 +38,4 @@ public class CommandLineRuner {
 
 
 
-        }
-
-
-
-
-
-
-
-
-
-
+}

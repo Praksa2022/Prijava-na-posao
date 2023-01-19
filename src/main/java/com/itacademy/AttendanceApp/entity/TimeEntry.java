@@ -1,12 +1,7 @@
 package com.itacademy.AttendanceApp.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
-
-
-
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -29,6 +24,9 @@ public class TimeEntry implements Serializable {
     @ManyToOne(optional = false)
     private User user;
 
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,7 +41,8 @@ public class TimeEntry implements Serializable {
     }
 
 
-    }
+
+}
 
 
 
