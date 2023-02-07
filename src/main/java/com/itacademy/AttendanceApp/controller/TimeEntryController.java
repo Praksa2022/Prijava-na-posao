@@ -2,53 +2,71 @@ package com.itacademy.AttendanceApp.controller;
 
 import com.itacademy.AttendanceApp.entity.TimeEntry;
 
+import com.itacademy.AttendanceApp.entity.User;
 import com.itacademy.AttendanceApp.service.TimeEntryService;
 
+import com.itacademy.AttendanceApp.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.io.IOException;
 
 
 @RestController
 @RequestMapping("/time")
+@RequiredArgsConstructor
 public class TimeEntryController {
+
     private final TimeEntryService timeEntryService;
 
-    public TimeEntryController(TimeEntryService timeEntryService) {
-        this.timeEntryService = timeEntryService;
+    private final UserService userService;
+
+
+   // public TimeEntryController(TimeEntryService timeEntryService) {
+//        this.timeEntryService = timeEntryService;
+//    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<TimeEntry> create(@PathVariable("id") Long id,
+                                            @RequestBody TimeEntry timeEntry) throws IOException {
+        User user = userService.findById(id);
+        timeEntry.setUser(user);
+        TimeEntry newTimeEntry = timeEntryService.saveTimeEntry(timeEntry);
+        return new ResponseEntity<>(newTimeEntry, HttpStatus.CREATED);
     }
 
-    @PostMapping("/{username}/entry")
-    public TimeEntry createTimeEntry(@PathVariable String username, @RequestBody TimeEntry timeEntry){
-//        timeEntry.setUser(username);
-        timeEntry.setId(null);
-        return timeEntryService.saveTimeEntry(timeEntry);
-    }
-
-    @GetMapping("/{username}/entry")
-    public TimeEntry getAllByUser(@PathVariable String username){
-        return timeEntryService.getByUser(username);
+    @GetMapping("/{username}")
+    public ResponseEntity<TimeEntry> getAllByUsername(@PathVariable("username") String username) {
+        return new ResponseEntity<>((timeEntryService.getByUser(username)), HttpStatus.OK);
     }
 
     @GetMapping("/")
-    public List<TimeEntry> getAll(){
-        return timeEntryService.getAllTimeEntry();
+    public ResponseEntity<TimeEntryListDTO> getAll() {
+        return new ResponseEntity<>(new TimeEntryListDTO(timeEntryService.getAllTimeEntry()), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{username}/entry/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable String username, @PathVariable int id){
+//    @PutMapping("/{id}")
+//    public ResponseEntity<TimeEntry> updateTimeEntry(@PathVariable Integer id, @RequestBody TimeEntry timeEntry){
+//        return new ResponseEntity<>(timeEntryService.updateTimeEntry(id, timeEntry), HttpStatus.OK);
+//    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Integer id) {
         timeEntryService.deleteRow(id);
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/{username}/entry/{id}")
-    public TimeEntry updateTodo(@PathVariable String username, @PathVariable int id, @RequestBody TimeEntry timeEntry){
-        timeEntryService.saveTimeEntry(timeEntry);
-        return timeEntry;
-    }
-}
 
+
+
+
+
+
+    }
 
 
 

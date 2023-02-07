@@ -21,7 +21,7 @@ public class TimeEntry implements Serializable {
     private String clocksOut;
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
 
 

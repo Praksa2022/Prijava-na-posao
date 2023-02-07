@@ -4,6 +4,8 @@ package com.itacademy.AttendanceApp.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -23,7 +25,6 @@ public class User implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "jmbg", unique = true)
-    @Size(min = 5, max = 15)
     private Integer jmbg;
 
     @Basic(optional = false)
@@ -32,10 +33,8 @@ public class User implements Serializable {
     @NotBlank
     private String username;
 
-    @Basic(optional = false)
     @Column(name = "password")
-    @Valid
-    @Size(min = 5, max = 15)
+    @NotBlank
     private String password;
 
     @Basic(optional = false)
